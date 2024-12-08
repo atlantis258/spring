@@ -72,3 +72,73 @@ XXXDAO ----> xXXDAO
 4.实现Mapper文件
 ```
 
+## 5.Spring与Mybatis整合代码
+
+1.搭建开发环境
+
+```xml
+<dependencies>
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-jdbc</artifactId>
+    <version>5.3.13</version>
+  </dependency>
+
+  <dependency>
+    <groupId>org.mybatis</groupId>
+    <artifactId>mybatis-spring</artifactId>
+    <version>3.0.2</version>
+  </dependency>
+
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context</artifactId>
+    <version>5.3.13</version>
+  </dependency>
+
+  <dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>druid</artifactId>
+    <version>1.2.15</version>
+  </dependency>
+
+  <dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>5.1.48</version>
+  </dependency>
+
+  <dependency>
+    <groupId>org.mybatis</groupId>
+    <artifactId>mybatis</artifactId>
+    <version>3.4.6</version>
+  </dependency>
+  </dependencies>
+```
+
+2.Spring配置文件的配置
+
+见代码
+
+3.编码
+
+见代码
+
+## 6.Spring与Mybatis整合细节
+
+问题：Spring与Mybatis整合后，为什么DAO不提交事务，但是数据能够插入数据库中？
+
+```
+Connection-->tX
+Mybatis(Connection）
+本质上控制连接对象（Connection）--->连接池（DataSource）
+1.Mybatis提供的连接池对象--->创建Connection
+	Connection.setAutocommit（false）手工的控制了事务，操作完成后，手工提交
+2.Druid（C3PODBCP）作为连接池创建Connection
+	Connection.setAutocommit（true）true默认值保持自动控制事务，一条sgl自动提交
+答案：因为Spring与Mybatis整合时，引入了外部连接池对象，保持自动的事务提交这个机制（Connection.setAutocommit（true）），不需要手工进行事务的操作，也能进行事务的提交
+注意：未来实战中，还会手工控制事务（多条sql一起成功，一起失败），后续Spring通过事务控制解决这个问题
+```
+
+
+
