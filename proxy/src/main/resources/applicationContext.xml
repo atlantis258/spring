@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <bean id="userService" class="com.xutp.dynamic.springdynamic.UserServiceImpl"/>
+
+    <bean id="orderService" class="com.xutp.dynamic.springdynamic.OrderServiceImpl"/>
+
+<!--    额外功能-->
+    <bean id="before" class="com.xutp.dynamic.springdynamic.Before"/>
+
+<!--    额外功能-->
+    <bean id="around" class="com.xutp.dynamic.springdynamic.Around"/>
+
+    <aop:config>
+<!--        所有的方法，都作为切入点，加入额外功能 login register-->
+        <aop:pointcut id="pc" expression="execution(* *(..))"/>
+
+<!--        组装：目的把切入点 与 额外功能 进行整合-->
+<!--        <aop:advisor advice-ref="before" pointcut-ref="pc"/>-->
+        <aop:advisor advice-ref="around" pointcut-ref="pc"/>
+    </aop:config>
+
+</beans>
