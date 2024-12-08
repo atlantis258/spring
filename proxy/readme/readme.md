@@ -83,7 +83,21 @@ public class UserServiceProxy implements UserService { // 代理类
 
 ### 2.1 JDK的动态代理
 
+代理创建的三要素：
 
+1.原始对象。
+
+2.额外功能。
+
+3.代理对象和原始对象实现相同的接口（interfaces：原始对象所实现的接口）。
+
+Proxy.newProxyInstance方法参数详解：
+
+![image-20241208161447711](D:\github\atlantis258\spring\proxy\readme\1)
+
+![image-20241208161507235](D:\github\atlantis258\spring\proxy\readme\2)
+
+代码见 jdk包
 
 ### 2.2 CGlib的动态代理
 

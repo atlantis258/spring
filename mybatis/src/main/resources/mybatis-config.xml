@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <!-- 设置 MyBatis 的全局配置 -->
+    <settings>
+        <!--        <setting name="lazyLoadingEnabled" value="true"/>-->
+        <!--        <setting name="multipleResultSetsEnabled" value="true"/>-->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <typeAliases>
+        <typeAlias type="com.xutp.entity.User" alias="User"/>
+        <typeAlias type="com.xutp.entity.Account" alias="Account"/>
+    </typeAliases>
+
+    <!-- 数据源配置 -->
+    <environments default="default">
+        <environment id="default">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/spring_mybatis?useSSL=false"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 映射文件配置 -->
+    <mappers>
+<!--        <mapper resource="com/example/mapper/YourMapper.xml"/>-->
+        <mapper resource="com/xutp/UserDAOMapper.xml"/>
+        <!-- 可以添加更多的 mapper -->
+    </mappers>
+
+</configuration>

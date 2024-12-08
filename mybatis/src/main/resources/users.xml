@@ -1,0 +1,10 @@
+<users>
+    <user>
+        <name>zhangsan</name>
+        <password>111</password>
+    </user>
+    <user>
+        <name>lisi</name>
+        <password>222</password>
+    </user>
+</users>
