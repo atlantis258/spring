@@ -56,7 +56,7 @@ public class TestMyBatis {
     @Test
     public void testJDBC() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/spring_mybatis?useSSL=false", "root", "xtp19970620");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/spring_mybatis?useSSL=false", "root", "root");
         Statement statement = conn.createStatement();
         statement.execute("select * from t_user");
         ResultSet resultSet = statement.getResultSet();
