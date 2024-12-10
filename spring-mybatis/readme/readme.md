@@ -36,30 +36,31 @@
 配置文件（ApplicationContext.xml）进行相关配置
 
 ```xml
+
 <bean id="dataSource" class=""/>
 
-<!--创建SqlSessionFactory-->
+        <!--创建SqlSessionFactory-->
 <bean id="ssfb" class="SqlSessionFactoryBean">
-    <property name="dataSource" ref=""/>
-    <property name="typeAliasesPackage">
-        指定实体类所在的包com.baizhiedu.entity    User
-                                            Product
-    </property>
-    <property name="mapperLocations">
-        指定	配置文件（映射文件）的路径还有通用配置
-        com.xutp.mapper/*Mapper.xml
-    </property>
+<property name="dataSource" ref=""/>
+<property name="typeAliasesPackage">
+    指定实体类所在的包com.baizhiedu.entity User
+    Product
+</property>
+<property name="mapperLocations">
+    指定 配置文件（映射文件）的路径还有通用配置
+    com.atlantis.mapper/*Mapper.xml
+</property>
 </bean>
-    
-<!--DA0接口的实现类>
-session --->	session.getMapper（）XXXDA0实现类对象
-XXXDAO ----> xXXDAO
--->
+
+        <!--DA0接口的实现类>
+        session --->    session.getMapper（）XXXDA0实现类对象
+        XXXDAO ----> xXXDAO
+        -->
 <bean id="scanner" class="MapperScannerConfigure">
-    <property name="sqlSessionFactoryBeanName" value="ssfb"/>
-    <property name="basePacakge">
-    	指定DA0接口放置的包com.xutp.dao
-    </property>
+<property name="sqlSessionFactoryBeanName" value="ssfb"/>
+<property name="basePacakge">
+    指定DA0接口放置的包com.xutp.dao
+</property>
 </bean>
 ```
 

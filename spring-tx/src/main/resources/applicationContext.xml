@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+           http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-<!--    连接池-->
+    <!--    连接池-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
         <property name="url" value="jdbc:mysql://localhost:3306/spring_mybatis?useSSL=false"></property>
@@ -12,7 +13,7 @@
         <property name="password" value="root"></property>
     </bean>
 
-<!--    创建SqlSessionFactory SqlSessionFactoryBean-->
+    <!--    创建SqlSessionFactory SqlSessionFactoryBean-->
     <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"></property>
         <property name="typeAliasesPackage" value="com.atlantis.entity"></property>
@@ -23,9 +24,23 @@
         </property>
     </bean>
 
-<!--    创建DAO对象 MapperScannerConfigurer-->
+    <!--    创建DAO对象 MapperScannerConfigurer-->
     <bean id="scanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean"></property>
         <property name="basePackage" value="com.atlantis.dao"></property>
     </bean>
+
+
+    <!--    原始对象 -->
+    <bean id="userService" class="com.atlantis.UserServiceImpl">
+        <property name="userDAO" ref="userDAO"/>
+    </bean>
+
+<!--    额外功能 DataSourceTransactionManager-->
+    <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+<!--    组装切面-->
+    <tx:annotation-driven transaction-manager="dataSourceTransactionManager"/>
 </beans>

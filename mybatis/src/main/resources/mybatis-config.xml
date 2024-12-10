@@ -13,8 +13,8 @@
     </settings>
 
     <typeAliases>
-        <typeAlias type="com.xutp.entity.User" alias="User"/>
-        <typeAlias type="com.xutp.entity.Account" alias="Account"/>
+        <typeAlias type="com.atlantis.entity.User" alias="User"/>
+        <typeAlias type="com.atlantis.entity.Account" alias="Account"/>
     </typeAliases>
 
     <!-- 数据源配置 -->

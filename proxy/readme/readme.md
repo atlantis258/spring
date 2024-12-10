@@ -121,7 +121,8 @@ public class UserServiceImpl implements UserService {
 ```
 
 ```xml
-<bean id="userService" class="com.xutp.dynamic.springdynamic.UserServiceImpl"/>
+
+<bean id="userService" class="com.atlantis.dynamic.springdynamic.UserServiceImpl"/>
 ```
 
 2.额外功能
@@ -140,7 +141,8 @@ public class Before implements MethodBeforeAdvice {
 ```
 
 ```xml
-<bean id="before" class="com.xutp.dynamic.springdynamic.Before"/>
+
+<bean id="before" class="com.atlantis.dynamic.springdynamic.Before"/>
 ```
 
 3.定义切入点
