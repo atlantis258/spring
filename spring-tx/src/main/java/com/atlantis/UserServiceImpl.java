@@ -20,6 +20,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public void register(User user) {
         this.userDAO.save(user);
+        throw new RuntimeException("runtimeException");
+//        throw new Exception("exception");
     }
 
     @Override
