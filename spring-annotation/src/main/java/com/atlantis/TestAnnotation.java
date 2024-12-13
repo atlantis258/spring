@@ -1,11 +1,11 @@
-package com.atlantis.entity;
+package com.atlantis;
 
+import com.atlantis.entity.User;
 import com.atlantis.injection.Category;
 import com.atlantis.injection.UserService;
 import com.atlantis.lazy.Account;
 import com.atlantis.scope.Customer;
 import org.junit.Test;
-import org.junit.experimental.theories.suppliers.TestedOn;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
