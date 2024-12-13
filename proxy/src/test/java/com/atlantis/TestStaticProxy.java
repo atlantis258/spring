@@ -1,7 +1,7 @@
 package com.atlantis;
 
 import com.atlantis.static1.*;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 public class TestStaticProxy {
 
